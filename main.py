@@ -225,7 +225,7 @@ def show_ads(m):
     cat_name = m.text
     
     with ads_lock: 
-        ads_list = [ad for ad in active_ads.values() if ad.get("category") == cat_name and ad.get("server"] == srv]
+        ads_list = [ad for ad in active_ads.values() if ad.get("category") == cat_name and ad.get("server") == srv]
     
     bot.send_message(m.chat.id, f"📊 Раздел: {cat_name}\n🌐 Сервер: {srv}\n\n" + ("🛒 Актуальные предложения:" if ads_list else "В разделе пока нет объявлений для этого сервера."))
     for aid, ad in active_ads.items():
