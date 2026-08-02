@@ -5,7 +5,7 @@ from datetime import datetime, time as dtime
 import telebot
 from telebot import types
 
-TOKEN = os.getenv("BOT_TOKEN", "8916669266:AAGmxTp3FlTEpwDWtKMbiGDvd00G4UbzsFs")
+TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
 user_states, user_data, active_ads, pending_posts = {}, {}, {}, {}
@@ -225,7 +225,7 @@ def show_ads(m):
     cat_name = m.text
     
     with ads_lock: 
-        ads_list = [ad for ad in active_ads.values() if ad.get("category") == cat_name and ad.get("server") == srv]
+        ads_list = [ad for ad in active_ads.values() if ad.get("category") == cat_name and ad.get("server"] == srv]
     
     bot.send_message(m.chat.id, f"📊 Раздел: {cat_name}\n🌐 Сервер: {srv}\n\n" + ("🛒 Актуальные предложения:" if ads_list else "В разделе пока нет объявлений для этого сервера."))
     for aid, ad in active_ads.items():
